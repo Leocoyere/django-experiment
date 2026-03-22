@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotAllowed
+from .forms import PersonForm
 
 # Create your views here.
 def hello_world_view(request):
@@ -25,11 +26,18 @@ def post_example(request):
     if request.method != 'POST':
         return HttpResponseNotAllowed(['POST'])
     
-    name =  request.POST.get('name')
-    age =  request.POST.get('age')
-    job =  request.POST.get('job')
+    form = PersonForm(request.POST)
 
-    return HttpResponse(f'You posted: {name}, {age}, {job}')
+    if form.is_valid():
+        name = form.cleaned_data['name']
+        age = form.cleaned_data['age']
+        job = form.cleaned_data['job']
 
+        return HttpResponse(f'You posted: {name}, {age}, {job}')
+    
 def submit_example(request):
     return render(request, 'todos/submit.html')
+
+def submit_form(request):
+    form = PersonForm()
+    return render(request, 'todos/submit_form.html', {"form": form})
