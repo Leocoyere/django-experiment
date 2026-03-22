@@ -13,4 +13,8 @@ urlpatterns = [
     path('postendpoint', views.post_example, name='post_example'),
     path('submitform', views.submit_form, name='submit_form'),
     path('templating', views.template_view, name='template_view'),
+    path('todos', views.todos_view, name='todos_view'),
+    path('person/<int:person_id>', views.person_details, name='person_details'),
+    path('delete_todo/<int:todo_id>', views.delete_todo, name='delete_todo'),
+    path('toggle_todo/<int:todo_id>', views.toggle_todo_done, name='toggle_todo_done'),
 ]
