@@ -41,3 +41,12 @@ def submit_example(request):
 def submit_form(request):
     form = PersonForm()
     return render(request, 'todos/submit_form.html', {"form": form})
+
+def template_view(request):
+    context = {
+        "name": "John",
+        "age": 25,
+        "skills": ["Python", "SQL", "Docker"]
+    }
+
+    return render(request, 'todos/template_demo.html', context)

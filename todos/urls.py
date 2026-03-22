@@ -11,5 +11,6 @@ urlpatterns = [
     path('helloquery', views.hello_query, name='hello_query'),
     path('submitendpoint', views.submit_example, name='submit_example'),
     path('postendpoint', views.post_example, name='post_example'),
-    path('submitform', views.submit_form, name='submit_form')
+    path('submitform', views.submit_form, name='submit_form'),
+    path('templating', views.template_view, name='template_view'),
 ]
